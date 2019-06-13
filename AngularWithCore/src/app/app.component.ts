@@ -8,7 +8,7 @@ import { Http } from '@angular/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  title: string = 'Login to your Account';
   apiValues: string[] = []
 
   constructor(private _service: Http) {
@@ -19,6 +19,5 @@ export class AppComponent implements OnInit {
     this._service.get("/api/values").subscribe(result => {
       this.apiValues = result.json() as string[];
     })
-  }
-  title = 'app works!';
+  }  
 }
