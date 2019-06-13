@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import{ Login } from '../../models/Login';
+import { Login } from '../../models/Login';
+import { LoginService } from '../../services/login.service'
 
 @Component({
   selector: 'app-login',
@@ -10,13 +10,19 @@ import{ Login } from '../../models/Login';
 export class LoginComponent implements OnInit {
   login:Login;
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
     this.login = {
-      matricNo: '990990',
-      password: 'femi'      
+      matricNo:  '',
+      password:  ''
     }
+  }
+
+  onSubmit() {
+    this.loginService.login(this.login).subscribe(login => {
+      console.log(login);
+    });
   }
 
 }
