@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,8 +18,8 @@
   </ItemGroup>
   
   <Target Name="Build Angular" Condition="'$(Configuration)'=='Release'" BeforeTargets="Build">
-  <Message Text="Build in Process" Importance="high"/>
-  <Exec Command="ng build -prod -aot"/>
+  <Message Text="Build in Process" Importance="high" />
+  <Exec Command="ng build -prod -aot" />
   </Target>
 
 </Project>
