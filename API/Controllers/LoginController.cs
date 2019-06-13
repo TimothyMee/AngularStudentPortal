@@ -12,11 +12,13 @@ namespace API.Controllers
 {
     public class LoginController : ApiController
     {
-        // POST: api/Login
-        [Route("Api/Login/UserLogin")]
-        [HttpPost]
+        // GET: api/Login
+        [HttpGet]
         public Response Login(Login Lg)
         {
+            Lg = new Login();
+            Lg.Username = "110408010";
+            Lg.Password = "pass";
             Students students = new Students();
             var student = Util.studentLogin(Lg.Username, Lg.Password, true); ;
             if (student == null)
@@ -24,5 +26,9 @@ namespace API.Controllers
             else
                 return new Response { Status = "Success", Message = Lg.Username };
         }
+
+
+
     }
 }
+ 
