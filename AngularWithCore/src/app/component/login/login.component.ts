@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../../models/Login';
 import { LoginService } from '../../services/login.service'
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +10,31 @@ import { LoginService } from '../../services/login.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  login:Login;
-
-  constructor(private loginService: LoginService) { }
+  login: FormGroup;
+  loginInfo: Login;
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
-    this.login = {
-      matricNo:  '',
-      password:  ''
-    }
+    this.login = new FormGroup({
+      'matricNo': new FormControl(null, [Validators.required]),
+      'password': new FormControl(null, [Validators.required])
+    })
   }
 
   onSubmit() {
-    this.loginService.login(this.login).subscribe(login => {
+    this.populateLoginInfo();
+    this.loginService.login(this.loginInfo).subscribe(login => {
+      if (login.status === 'Success') {
+        this.router.navigate(['/dashboard']);
+      }
       console.log(login);
     });
   }
 
+  populateLoginInfo() {
+    this.loginInfo = {
+      matricNo: this.login.get('matricNo').value,
+      password: this.login.get('password').value
+    }
+  }
 }
