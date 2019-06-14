@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -9,22 +9,24 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 export class BasicInfoComponent implements OnInit {
   programme: string;
   level: number;
-  matricNo: string;
+  @Input() matricNo: string;
   userName: string;
   pic: string;
-
   constructor(private profile: DashboardService) {
-    this.matricNo = '110408010';
+    console.log("mat",this.matricNo)
+    this.matricNo=localStorage.getItem("mat");
   }
 
   ngOnInit() {
     this.profile.getProfile(this.matricNo).subscribe(res => {
-      debugger;
       this.level = res.level;
       this.programme = res.programmeName;
       this.userName = res.fullName
     });
     
   }
+
+  //receiveMessage($event) {
+  //this.matricNo=$event}
 
 }

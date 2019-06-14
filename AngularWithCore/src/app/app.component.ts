@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string = 'Login to your Account';
+
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+  //message = " "
+  //receiveMessage($event) { this.message = $event }
+
 }

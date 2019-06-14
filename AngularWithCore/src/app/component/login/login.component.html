@@ -7,9 +7,9 @@
   <div>
     <form [formGroup]="login" (ngSubmit)="onSubmit()" class="text-center">
       <div class="form-group ">
-        <label for="matricNo">
-          Matric No / Application No
-          <input type="text" formControlName="matricNo" class="form-control" />
+          <label for="matricNo">
+            Matric No / Application No
+            <input type="text" formControlName="matricNo" class="form-control" />
         </label>
       </div>
       
@@ -19,7 +19,7 @@
           <input type="password" formControlName="password" class="form-control" />
         </label>
       </div>
-      <button type="submit" [disabled]="!login.valid" class="btn btn-primary ">
+      <button type="submit" [disabled]="!login.valid" class="btn btn-primary"> <!--(click)="getMatricNo()">-->
         <!--<span class="spinner-border spinner-border-sm hidden" role="status" aria-hidden="true" ></span>-->
         Login
       </button>
