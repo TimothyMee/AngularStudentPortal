@@ -1,20 +1,24 @@
 <div>
-  <h4>Login to your Account</h4>
+  <h4 class="text-align-center">Login to your Account</h4>
   <div>
     <img src="../../../assets//images/lock.png"/>
   </div>
 
-  <div>
-      <form class="form" (ngSubmit)="onSubmit()">
-          <div>
-              <label>Matric No / Application No</label>
-              <input type="text" name="matricNo" [(ngModel)]="login.matricNo">
+  <div class="col-mb-4 col-mb-offset-4">
+      <form [formGroup]="login" (ngSubmit)="onSubmit()" >
+          <div class="form-group">
+            <label for="matricNo">
+              Matric No / Application No
+              <input type="text" formControlName="matricNo" class="form-control"/>
+            </label>
           </div>
-          <div>
-            <label>Password</label>
-            <input type="password" name="password" (ngModel)="login.password">
+          <div class="form-group">
+            <label>
+              Password
+              <input type="password" formControlName="password" class="form-control"/>
+            </label>
           </div>
-          <input type="submit" value="Login" class="btn">
+          <input type="submit" [disabled]="!login.valid" value="Login" class="btn-sm btn-info ">
         </form>
         <p>
           <strong>Note:</strong> Your default password is your surname in lowercase

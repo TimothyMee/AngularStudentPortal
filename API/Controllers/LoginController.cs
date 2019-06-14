@@ -13,14 +13,14 @@ namespace API.Controllers
     public class LoginController : ApiController
     {
         // GET: api/Login
-        //[HttpGet]
+        [HttpPost]
         public Response Login(Login Lg)
         {
             //Lg = new Login();
             //Lg.Username = "110408010";
             //Lg.Password = "pass";
             //Students students = new Students();
-            var student = Util.studentLogin(Lg.MatricNo, Lg.Password, true); 
+            var student = Util.studentLogin(Lg.MatricNo, Lg.Password); 
             if (student == null)
                 return new Response { Status = "Invalid", Message = "Invalid User." };
             else
