@@ -1,0 +1,29 @@
+
+  <div class="login-content">
+		<div>
+  <h4>Login to your Account</h4>
+<div>
+		<div class="form-wrapper">
+		   <div>
+				<img src="../../../assets//images/lock.png"/>
+		   </div>
+		  <form class="form">
+			  <div>
+				  <legend>Matric No / Application No</legend>
+				  <input type="text" name="matricNo" [(ngModel)]="login.matricNo">
+			  </div>
+			  <div>
+				<legend>Password</legend>
+				<input type="password" name="password" [(ngModel)]="login.password">
+			  </div>
+			  <input type="submit" value="Login">
+		  </form>
+		   <p>
+			  <strong>Note:</strong> Your default password is your surname in lowercase
+		   </p>
+		   <a href="">Retrieve Matric No</a> |
+		   <a href="">Forgot your password?</a> |
+		   <a href="">Parents' Corner</a>
+		</div>
+  </div>
+
