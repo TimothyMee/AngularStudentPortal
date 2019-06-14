@@ -1,6 +1,7 @@
 ﻿using API.Models;
 using AppFramework.Linq;
 using Premier.EntityClasses;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,7 +12,7 @@ namespace API.Controllers
     public class MenuController : ApiController
     {
         [HttpGet]
-        [Route("api/menu/dashboardprofile/{MatricNo}")]
+        [Route("api/dashboardprofile/{MatricNo}")]
         public DashBoardProfile DashBoardProfile(string MatricNo)
         {
             //Lg = new Login();
@@ -28,10 +29,12 @@ namespace API.Controllers
 
                 return new DashBoardProfile { HttpResponse = response };
             }
-            var studentProgrammeName = student.getCurrentStudentProgramme().Programme.ProgrammeName;
+            var studentProgramme = student.getCurrentStudentProgramme();
             var passportImageData = (from sp in new QueryableEntity<StudentPassports>() where sp.MatricNo == student.MatricNo select sp.PassportData).ToList().AppFirst();
-            ;
-            return new DashBoardProfile { FullName = student.FullName, PassportImageData = passportImageData, ProgrammeName = studentProgrammeName };
+            var imgString = passportImageData != null ? Convert.ToBase64String(passportImageData) : "";
+            
+            return new DashBoardProfile { FullName = student.FullName, PassportImageData = imgString, ProgrammeName = studentProgramme.Programme.ProgrammeName,
+                                        Level = studentProgramme.Level };
         }
 
     }

@@ -16,7 +16,8 @@ namespace API.Models
     {
         public string FullName { get; set; }
         public string ProgrammeName { get; set; }
-        public Byte[] PassportImageData { get; set; }
+        public string PassportImageData { get; set; }
+        public int Level { get; set; }
         public HttpResponseMessage HttpResponse { get; set; }
     }
 }
