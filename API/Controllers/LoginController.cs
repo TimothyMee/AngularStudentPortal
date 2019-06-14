@@ -13,7 +13,7 @@ namespace API.Controllers
     public class LoginController : ApiController
     {
         // GET: api/Login
-        //[HttpPost]
+        //[HttpGet]
         public Response Login(Login Lg)
         {
             //Lg = new Login();
