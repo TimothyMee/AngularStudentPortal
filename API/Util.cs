@@ -120,5 +120,9 @@ namespace API
             }
         }
 
+        internal static Students GetStudent(string MatricNo)
+        {
+            return (from s in new QueryableEntity<Students>() where s.MatricNo == MatricNo select s).FirstOrDefault();
+        }
     }
 }
