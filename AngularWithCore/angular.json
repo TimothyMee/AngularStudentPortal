@@ -6,9 +6,6 @@
     "StudentPortal": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
-          "style": "sass"
-        }
       },
       "root": "",
       "sourceRoot": "src",
@@ -29,7 +26,6 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/styles.scss",
               "./node_modules/font-awesome/scss/font-awesome.scss",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
@@ -95,7 +91,6 @@
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "src/styles.sass"
             ],
             "scripts": {
               "fix-memory-limit": "cross-env LIMIT=2048 increase-memory-limit"

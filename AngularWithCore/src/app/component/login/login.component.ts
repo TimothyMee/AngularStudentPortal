@@ -12,9 +12,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   login: FormGroup;
   loginInfo: Login;
+  show: boolean;
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
+    this.show = false;
     this.login = new FormGroup({
       'matricNo': new FormControl(null, [Validators.required]),
       'password': new FormControl(null, [Validators.required])
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.show = true;
     this.populateLoginInfo();
     this.loginService.login(this.loginInfo).subscribe(login => {
       if (login.status === 'Success') {
